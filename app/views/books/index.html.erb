@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th><%= Book.human_attribute_name(:id) %></th>
       <th><%= Book.human_attribute_name(:title) %></th>
       <th><%= Book.human_attribute_name(:memo) %></th>
       <th><%= Book.human_attribute_name(:author) %></th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
+        <td><%= book.id %></td>
         <td><%= book.title %></td>
         <td><%= book.memo %></td>
         <td><%= book.author %></td>
@@ -27,6 +29,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @books %>
 
 <br>
 
