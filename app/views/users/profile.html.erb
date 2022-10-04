@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h5><%= link_to "ユーザー一覧", users_path %></h5>
+<h1>プロフィール</h1>
+
+<p>
+  <strong><%= User.human_attribute_name(:email) %>:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong><%= User.human_attribute_name(:postal_code) %>:</strong>
+  <%= @user.postal_code %>
+</p>
+
+<p>
+  <strong><%= User.human_attribute_name(:address) %>:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong><%= User.human_attribute_name(:self_introduction) %>:</strong>
+  <%= @user.self_introduction %>
+</p>
+
+<%= link_to t('views.common.edit'), edit_user_registration_path %> |
+<%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %>
