@@ -1,4 +1,4 @@
-<h1><%= User.model_name.human %></h1>
+<h1><%= t('views.common.title_followings') %></h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @followings.each do |user| %>
       <tr>
         <th>
           <% if user.avatar.attached? %>
@@ -26,15 +26,9 @@
         <td><%= user.address %></td>
         <td>
           <%= link_to t('views.common.show'), user %>
-          <% if user.followed %>
-            <%= link_to t('views.common.unfollow'), unfollow_user_path(user), :method => :delete %>
-          <% elsif user != current_user %>
-            <%= link_to t('views.common.follow'), follow_user_path(user), :method => :post %>
-          <% end %>
+          <%= link_to t('views.common.unfollow'), unfollow_user_path(user), :method => :delete %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= paginate @users %>
