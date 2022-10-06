@@ -10,6 +10,13 @@ ja:
         picture: 写真  #g
         title: 題名  #g
   views:
+    common:
+      show: 見る
+      edit: 変更
+      destroy: 削除
+      create: 新しい本
+      back: 戻る
+      confirm: よろしいですか?
     books:
       index:
         title: 本
@@ -19,11 +26,3 @@ ja:
         title: 新しい本
       edit:
         title: 本の編集
-  link:
-    show: 見る
-    edit: 変更
-    destroy: 削除
-    create: 新しい本
-    back: 戻る
-    confirm: よろしいですか?
-    
