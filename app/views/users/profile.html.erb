@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h5><%= link_to "ユーザー一覧", users_path %></h5>
-<h1>プロフィール</h1>
+<h5><%= link_to User.model_name.human, users_path %></h5>
+<h1><%= t('views.users.profile') %></h1>
 
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
@@ -24,4 +24,4 @@
 </p>
 
 <%= link_to t('views.common.edit'), edit_user_registration_path %> |
-<%= link_to 'ログアウト', destroy_user_session_path, :method => :delete %>
+<%= link_to t('views.common.logout'), destroy_user_session_path, :method => :delete %>
