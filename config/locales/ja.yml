@@ -218,25 +218,29 @@ ja:
       title_show: "%{name}の詳細"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
-      follow: "フォロー"
-      unfollow: "フォローをやめる"
-      title_followers: "そのユーザーのフォロワーたち"
-      title_followings: "そのユーザーがフォローしているユーザーたち"
-      followers: "フォロワー"
-      followings: "フォロー"
     pagination:
       first: '最初'
       last: '最後'
       previous: '前'
       next: '次'
       truncate: '...'
+    users:
+      follow: "フォローする"
+      unfollow: "フォロー解除する"
+      show:
+        followers: "%{count} フォロワー"
+        followings: "%{count} フォロー"
+      followers:
+        title: "そのユーザーのフォロワーたち"
+      followings:
+        title: "そのユーザーがフォローしているユーザーたち"
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
-      notice_follow: "%{name}にフォロー。"
-      notice_unfollow: "%{name}にフォローをやめる。"
+      notice_follow: "フォローしました。"
+      notice_unfollow: "フォロー解除しました。"
   layouts:
     application:
       menu: メニュー

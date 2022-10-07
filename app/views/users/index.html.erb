@@ -27,9 +27,9 @@
         <td>
           <%= link_to t('views.common.show'), user %>
           <% if user.followed %>
-            <%= link_to t('views.common.unfollow'), unfollow_user_path(user), :method => :delete %>
+            <%= link_to t('views.users.unfollow'), unfollow_user_path(user), :method => :delete %>
           <% elsif user != current_user %>
-            <%= link_to t('views.common.follow'), follow_user_path(user), :method => :post %>
+            <%= link_to t('views.users.follow'), follow_user_path(user), :method => :post %>
           <% end %>
         </td>
       </tr>

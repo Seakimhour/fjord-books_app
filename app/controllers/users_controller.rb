@@ -29,11 +29,11 @@ class UsersController < ApplicationController
 
   def follow
     Follow.create(follower_id: current_user.id, following_id: params[:id])
-    redirect_back(fallback_location: users_path, notice: t('controllers.common.notice_follow', name: User.model_name.human))
+    redirect_back(fallback_location: users_path, notice: t('controllers.common.notice_follow'))
   end
 
   def unfollow
     Follow.find_by(follower_id: current_user.id, following_id: params[:id]).destroy
-    redirect_back(fallback_location: users_path, notice: t('controllers.common.notice_unfollow', name: User.model_name.human))
+    redirect_back(fallback_location: users_path, notice: t('controllers.common.notice_unfollow'))
   end
 end
