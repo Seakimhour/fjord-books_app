@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
+  before_action :owner_validate, only: %i[edit update destroy]
 
   def index
     @reports = Report.order(:id).page(params[:page])
@@ -49,11 +50,17 @@ class ReportsController < ApplicationController
 
   private
 
+  def owner_validate
+    if current_user != @report.user
+      redirect_back(fallback_location: root_path, alert: t('errors.messages.forbidden'))
+    end
+  end
+
   def set_report
     @report = Report.find(params[:id])
   end
 
   def report_params
-    params.require(:report).permit(:title, :content)
+    params.require(:report).permit(:title, :content).merge(user_id: current_user.id)
   end
 end
