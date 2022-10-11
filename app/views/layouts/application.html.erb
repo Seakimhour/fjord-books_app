@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <a href="<%= "/en#{request.original_fullpath[3..]}" %>">en</a>|<a href="<%= "/ja#{request.original_fullpath[3..]}" %>">ja</a>
     <%= yield %>
   </body>
 </html>

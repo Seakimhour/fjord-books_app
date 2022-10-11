@@ -1,0 +1,29 @@
+en:
+  activerecord:
+    models:
+      book: Book  #g
+
+    attributes:
+      book:
+        author: Author  #g
+        memo: Memo  #g
+        picture: Picture  #g
+        title: Title  #g
+  views:
+    books:
+      index:
+        title: Books
+      form:
+        error_count: "%{count} prohibited this book from being saved:"
+      new:
+        title: New Book
+      edit:
+        title: Editing Book
+  link:
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    create: New Book
+    back: Back
+    confirm: Are you sure?
+    
