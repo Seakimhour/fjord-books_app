@@ -35,7 +35,7 @@
 
 <% if @user == current_user %>
   <%= link_to t('views.common.edit'), edit_user_registration_path %> |
-<% elsif @user.followed %>
+<% elsif @user.followed_by?(current_user) %>
   <%= link_to t('views.users.unfollow'), unfollow_user_path(@user), :method => :delete %> |
 <% else %>
   <%= link_to t('views.users.follow'), follow_user_path(@user), :method => :post %> |
