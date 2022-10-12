@@ -27,7 +27,7 @@
 
 <p>
   <strong><%= User.human_attribute_name(:icon) %>:</strong>
-  <%= image_tag @user.icon.representation(resize_to_limit: [64, 64]) %>
+  <%= image_tag @user.icon.representation(resize_to_limit: [64, 64]) if @user.icon.representable? %>
 </p>
 
 <% if current_user == @user %>
