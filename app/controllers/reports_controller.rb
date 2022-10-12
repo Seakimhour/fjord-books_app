@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
   before_action :owner_validate, only: %i[edit update destroy]
@@ -51,9 +53,7 @@ class ReportsController < ApplicationController
   private
 
   def owner_validate
-    if current_user != @report.user
-      redirect_back(fallback_location: root_path, alert: t('errors.messages.forbidden'))
-    end
+    redirect_back(fallback_location: root_path, alert: t('errors.messages.forbidden')) if current_user != @report.user
   end
 
   def set_report
