@@ -10,10 +10,6 @@ class UsersController < ApplicationController
   end
 
   def profile
-    if current_user
-      @user = current_user
-    else
-      redirect_to new_user_session_path
-    end
+    @user = current_user
   end
 end
