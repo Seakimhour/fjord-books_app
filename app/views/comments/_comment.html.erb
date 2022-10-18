@@ -7,7 +7,9 @@
       <%= comment.user.name %>
       <span>
         <%= comment.created_at %>
-        <%= link_to t('views.common.destroy'), comment_path(comment_id: comment.id), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+        <% if comment.user == current_user %>
+          <%= link_to t('views.common.destroy'), comment_path(comment), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+        <% end %>
       </span>
     </p>
   </div>

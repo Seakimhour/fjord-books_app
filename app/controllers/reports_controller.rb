@@ -17,18 +17,32 @@ class ReportsController < ApplicationController
   def edit; end
 
   def create
-    @report = current_user.reports.create!(report_params)
-    redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    @report = current_user.reports.new(report_params)
+
+    respond_to do |format|
+      if @report.save
+        format.html { redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human) }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def update
-    @report.update!(report_params)
-    redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    respond_to do |format|
+      if @report.update(report_params)
+        format.html { redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human) }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
-    @report.destroy!
-    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
+    @report.destroy
+    respond_to do |format|
+      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
+    end
   end
 
   private

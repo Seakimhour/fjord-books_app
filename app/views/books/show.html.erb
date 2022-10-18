@@ -28,6 +28,11 @@
 <%= form_with url: book_comments_url(book_id: @book.id) do |form| %>
   <%= form.label Comment.human_attribute_name(:comment) %>
   <%= form.text_area :comment, size: "60x4" %>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |message| %>
+      <p style="color: red"><%= message %></p>
+    <% end %>
+  <% end %>
   <div>
     <%= form.submit t('comments.comment') %>
   </div>
