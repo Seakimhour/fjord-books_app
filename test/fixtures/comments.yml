@@ -2,12 +2,12 @@
 
 one:
   user: one
-  commentable: one
+  commentable: one (Book)
   commentable_type: Commentable
   content: MyString
 
 two:
   user: two
-  commentable: two
+  commentable: two (Report)
   commentable_type: Commentable
   content: MyString

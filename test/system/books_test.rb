@@ -3,45 +3,47 @@
 require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @book = books(:one)
+
+    sign_in users(:one)
   end
 
   test 'visiting the index' do
     visit books_url
-    assert_selector 'h1', text: 'Books'
+    assert_selector 'h1', text: Book.model_name.human
   end
 
-  test 'creating a Book' do
+  test 'creating a book' do
     visit books_url
-    click_on 'New Book'
+    click_on I18n.t('views.common.new')
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+    fill_in 'book[title]', with: @book.title
+    fill_in 'book[memo]', with: @book.memo
+    click_on I18n.t('helpers.submit.create')
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+    assert_text I18n.t('controllers.common.notice_create', name: Book.model_name.human)
   end
 
-  test 'updating a Book' do
+  test 'updating a book' do
     visit books_url
-    click_on 'Edit', match: :first
+    click_on I18n.t('views.common.edit'), match: :prefer_exact
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+    fill_in 'book[title]', with: @book.title
+    fill_in 'book[memo]', with: @book.memo
+    click_on I18n.t('helpers.submit.update')
 
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+    assert_text I18n.t('controllers.common.notice_update', name: Book.model_name.human)
   end
 
-  test 'destroying a Book' do
+  test 'destroying a book' do
     visit books_url
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on I18n.t('views.common.destroy'), match: :first
     end
 
-    assert_text 'Book was successfully destroyed'
+    assert_text I18n.t('controllers.common.notice_destroy', name: Book.model_name.human)
   end
 end
