@@ -17,7 +17,7 @@ class RelationshipsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Relationship.count') do
       post user_relationships_url(@user_two)
     end
-    
+
     assert_redirected_to user_path(@user_two)
   end
 

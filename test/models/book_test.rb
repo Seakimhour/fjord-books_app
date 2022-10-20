@@ -8,7 +8,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   test 'valid book' do
-    book = Book.new()
+    book = Book.new
     assert book.valid?
   end
 end

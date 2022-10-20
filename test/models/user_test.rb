@@ -24,9 +24,9 @@ class UserTest < ActiveSupport::TestCase
 
   test 'unfollow a user' do
     @user_two.unfollow(@user_one)
-    refute @user_one.following?(@user_two)
+    assert_not @user_one.following?(@user_two)
   end
-  
+
   test 'should user email' do
     assert_equal @user_one.name_or_email, @user_one.email
   end

@@ -16,11 +16,11 @@ class CommentTest < ActiveSupport::TestCase
 
   test 'invalid without user' do
     comment = Comment.new(content: 'my comment')
-    refute comment.valid?
+    assert_not comment.valid?
   end
 
   test 'invalid without content' do
     comment = Comment.new(user_id: @user.id)
-    refute comment.valid?
+    assert_not comment.valid?
   end
 end

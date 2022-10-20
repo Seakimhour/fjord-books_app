@@ -15,20 +15,20 @@ class ReportTest < ActiveSupport::TestCase
 
   test 'invalid without user' do
     report = Report.new(title: 'Report one', content: 'This is report one')
-    refute report.valid?
+    assert_not report.valid?
   end
 
   test 'invalid without title' do
     report = Report.new(content: 'This is report one', user_id: @user.id)
-    refute report.valid?
+    assert_not report.valid?
   end
 
   test 'invalid without content' do
     report = Report.new(title: 'Report one', user_id: @user.id)
-    refute report.valid?
+    assert_not report.valid?
   end
 
   test 'invalid editable?' do
-    refute @report.editable?(@user)
+    assert_not @report.editable?(@user)
   end
 end
