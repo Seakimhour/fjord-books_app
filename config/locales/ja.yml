@@ -133,6 +133,7 @@ ja:
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
+      forbidden: "禁止"
     template:
       body: 次の項目を確認してください
       header:
@@ -250,6 +251,12 @@ ja:
       notice: "フォローしました。"
     destroy:
       notice: "フォロー解除しました。"
+  comments:
+    comment: "コメント"
+    create:
+      notice: "コメントしました。"
+    destroy:
+      notice: "コメント削除しました。"
   # devise-i18n-viewsをオーバーライド
   devise:
     registrations:
