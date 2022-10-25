@@ -1,4 +1,4 @@
-<h1><%= User.model_name.human %></h1>
+<h1><%= t('views.users.followers.title') %></h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @followers.each do |user| %>
       <tr>
         <th>
           <% if user.avatar.attached? %>
@@ -24,12 +24,8 @@
         <td><%= user.name %></td>
         <td><%= user.postal_code %></td>
         <td><%= user.address %></td>
-        <td>
-          <%= link_to t('views.common.show'), user %>
-        </td>
+        <td><%= link_to t('views.common.show'), user %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= paginate @users %>
