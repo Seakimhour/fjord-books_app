@@ -6,44 +6,42 @@ class ReportsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @report = reports(:one)
-
     sign_in users(:one)
   end
 
   test 'visiting the index' do
     visit reports_url
-    assert_selector 'h1', text: Report.model_name.human
+    assert_selector 'h1', text: '日報'
   end
 
   test 'creating a report' do
     visit reports_url
-    click_on I18n.t('views.common.new')
+    click_on '新規作成'
 
-    fill_in 'report[title]', with: @report.title
-    fill_in 'report[content]', with: @report.content
-    click_on I18n.t('helpers.submit.create')
+    fill_in 'report[title]', with: 'new report'
+    fill_in 'report[content]', with: 'report content'
+    click_on '登録する'
 
-    assert_text I18n.t('controllers.common.notice_create', name: Report.model_name.human)
+    assert_text '日報が作成されました。'
   end
 
   test 'updating a Report' do
     visit reports_url
-    click_on I18n.t('views.common.edit'), match: :prefer_exact
+    click_on '編集', match: :prefer_exact
 
-    fill_in 'report[title]', with: @report.title
-    fill_in 'report[content]', with: @report.content
-    click_on I18n.t('helpers.submit.update')
+    fill_in 'report[title]', with: 'new report'
+    fill_in 'report[content]', with: 'report content'
+    click_on '更新する'
 
-    assert_text I18n.t('controllers.common.notice_update', name: Report.model_name.human)
+    assert_text '日報が更新されました。'
   end
 
   test 'destroying a Report' do
     visit reports_url
     page.accept_confirm do
-      click_on I18n.t('views.common.destroy'), match: :first
+      click_on '削除', match: :first
     end
 
-    assert_text I18n.t('controllers.common.notice_destroy', name: Report.model_name.human)
+    assert_text '日報が削除されました。'
   end
 end

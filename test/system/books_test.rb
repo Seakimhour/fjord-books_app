@@ -6,44 +6,42 @@ class BooksTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @book = books(:one)
-
     sign_in users(:one)
   end
 
   test 'visiting the index' do
     visit books_url
-    assert_selector 'h1', text: Book.model_name.human
+    assert_selector 'h1', text: '本'
   end
 
   test 'creating a book' do
     visit books_url
-    click_on I18n.t('views.common.new')
+    click_on '新規作成'
 
-    fill_in 'book[title]', with: @book.title
-    fill_in 'book[memo]', with: @book.memo
-    click_on I18n.t('helpers.submit.create')
+    fill_in 'book[title]', with: 'new book'
+    fill_in 'book[memo]', with: 'book memo'
+    click_on '登録する'
 
-    assert_text I18n.t('controllers.common.notice_create', name: Book.model_name.human)
+    assert_text '本が作成されました。'
   end
 
   test 'updating a book' do
     visit books_url
-    click_on I18n.t('views.common.edit'), match: :prefer_exact
+    click_on '編集', match: :prefer_exact
 
-    fill_in 'book[title]', with: @book.title
-    fill_in 'book[memo]', with: @book.memo
-    click_on I18n.t('helpers.submit.update')
+    fill_in 'book[title]', with: 'new book'
+    fill_in 'book[memo]', with: 'book memo'
+    click_on '更新する'
 
-    assert_text I18n.t('controllers.common.notice_update', name: Book.model_name.human)
+    assert_text '本が更新されました。'
   end
 
   test 'destroying a book' do
     visit books_url
     page.accept_confirm do
-      click_on I18n.t('views.common.destroy'), match: :first
+      click_on '削除', match: :first
     end
 
-    assert_text I18n.t('controllers.common.notice_destroy', name: Book.model_name.human)
+    assert_text '本が削除されました。'
   end
 end

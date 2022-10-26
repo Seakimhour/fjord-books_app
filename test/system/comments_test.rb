@@ -6,18 +6,16 @@ class CommentsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @comment = comments(:one)
-
     sign_in users(:one)
   end
 
   test 'creating a comment on a report' do
     visit reports_url
-    click_on I18n.t('views.common.show'), match: :first
+    click_on '詳細', match: :first
 
-    fill_in 'comment[content]', with: @comment.content
-    click_on I18n.t('shared.comments.create')
+    fill_in 'comment[content]', with: 'new comment'
+    click_on 'コメントする'
 
-    assert_text I18n.t('controllers.common.notice_comment_created')
+    assert_text 'コメントが投稿されました。'
   end
 end

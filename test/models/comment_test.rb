@@ -15,12 +15,18 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'invalid without user' do
-    comment = Comment.new(content: 'my comment')
+    comment = @book.comments.new(content: 'my comment')
     assert_not comment.valid?
+
+    comment.user = @user
+    assert comment.valid?
   end
 
   test 'invalid without content' do
-    comment = Comment.new(user_id: @user.id)
+    comment = @book.comments.new(user_id: @user.id)
     assert_not comment.valid?
+
+    comment.content = 'my comment'
+    assert comment.valid?
   end
 end

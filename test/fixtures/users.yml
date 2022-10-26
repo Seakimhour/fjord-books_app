@@ -14,5 +14,6 @@ two:
   encrypted_password: password
 
 three:
+  name: test
   email: test-three@example.com
   encrypted_password: password

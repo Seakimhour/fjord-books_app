@@ -17,15 +17,15 @@ class RelationshipsTest < ApplicationSystemTestCase
 
   test 'following a user' do
     visit user_url(@user_one)
-    click_on I18n.t('users.show.create')
+    click_on 'フォローする'
 
-    assert_text I18n.t('relationships.create.notice')
+    assert_text 'フォローしました。'
   end
 
   test 'unfollow a user' do
     visit user_url(@user_three)
-    click_on I18n.t('users.show.destroy')
+    click_on 'フォロー解除する'
 
-    assert_text I18n.t('relationships.destroy.notice')
+    assert_text 'フォロー解除しました。'
   end
 end

@@ -4,31 +4,48 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
   setup do
-    @user = users(:one)
-    @report = reports(:two)
+    @user_one = users(:one)
+    @user_two = users(:two)
   end
 
   test 'valid report' do
-    report = Report.new(title: 'Report one', content: 'This is report one', user_id: @user.id)
+    report = @user_one.reports.new(title: 'Report one', content: 'This is report one')
     assert report.valid?
   end
 
   test 'invalid without user' do
     report = Report.new(title: 'Report one', content: 'This is report one')
     assert_not report.valid?
+
+    report.user = @user_one
+    assert report.valid?
   end
 
   test 'invalid without title' do
-    report = Report.new(content: 'This is report one', user_id: @user.id)
+    report = @user_one.reports.new(content: 'This is report one')
     assert_not report.valid?
+
+    report.title = 'Report one'
+    assert report.valid?
   end
 
   test 'invalid without content' do
-    report = Report.new(title: 'Report one', user_id: @user.id)
+    report = @user_one.reports.new(title: 'Report one')
     assert_not report.valid?
+
+    report.content = 'This is report one'
+    assert report.valid?
+  end
+
+  test 'valid editable?' do
+    report = @user_one.reports.new(title: 'Report one', content: 'This is report one')
+
+    assert report.editable?(@user_one)
   end
 
   test 'invalid editable?' do
-    assert_not @report.editable?(@user)
+    report = @user_one.reports.new(title: 'Report one', content: 'This is report one')
+
+    assert_not report.editable?(@user_two)
   end
 end
