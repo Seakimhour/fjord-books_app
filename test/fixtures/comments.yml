@@ -4,10 +4,10 @@ one:
   user: one
   commentable: one (Book)
   commentable_type: Commentable
-  content: MyString
+  content: Among the greatest works of imaginative fiction of the twentieth century. The book presents us with the richest profusion of new lands and creatures, from the beauty of Lothlórien to the horror of Mordor.
 
 two:
   user: two
   commentable: two (Report)
   commentable_type: Commentable
-  content: MyString
+  content: This book is great! And the cliffhanger at the end makes you have immediately start the next book! Aragorn is so cool in this book and I love everything that people missed in the movies (which I also love). Definitely recommend people to read!!

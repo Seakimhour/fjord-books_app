@@ -9,12 +9,12 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'valid report' do
-    report = @user_one.reports.new(title: 'Report one', content: 'This is report one')
+    report = @user_one.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
     assert report.valid?
   end
 
   test 'invalid without user' do
-    report = Report.new(title: 'Report one', content: 'This is report one')
+    report = Report.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
     assert_not report.valid?
 
     report.user = @user_one
@@ -22,29 +22,29 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'invalid without title' do
-    report = @user_one.reports.new(content: 'This is report one')
+    report = @user_one.reports.new(content: 'J. R. R. Tolkien\'s The Lord of the Rings')
     assert_not report.valid?
 
-    report.title = 'Report one'
+    report.title = 'The Return of the King Book Review'
     assert report.valid?
   end
 
   test 'invalid without content' do
-    report = @user_one.reports.new(title: 'Report one')
+    report = @user_one.reports.new(title: 'The Return of the King Book Review')
     assert_not report.valid?
 
-    report.content = 'This is report one'
+    report.content = 'J. R. R. Tolkien\'s The Lord of the Rings'
     assert report.valid?
   end
 
   test 'valid editable?' do
-    report = @user_one.reports.new(title: 'Report one', content: 'This is report one')
+    report = @user_one.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
 
     assert report.editable?(@user_one)
   end
 
   test 'invalid editable?' do
-    report = @user_one.reports.new(title: 'Report one', content: 'This is report one')
+    report = @user_one.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
 
     assert_not report.editable?(@user_two)
   end

@@ -13,9 +13,11 @@ class CommentsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '詳細', match: :first
 
-    fill_in 'comment[content]', with: 'new comment'
+    fill_in 'comment[content]', with: 'This book is great!'
     click_on 'コメントする'
 
     assert_text 'コメントが投稿されました。'
+
+    assert_text 'This book is great!'
   end
 end

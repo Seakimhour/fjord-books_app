@@ -10,22 +10,32 @@ class RelationshipsTest < ApplicationSystemTestCase
     @user_two = users(:two)
     @user_three = users(:three)
 
-    @user_two.follow(@user_three)
+    @user_one.follow(@user_three)
 
-    sign_in @user_two
+    sign_in @user_one
   end
 
   test 'following a user' do
-    visit user_url(@user_one)
+    assert_not @user_one.following?(@user_two)
+
+    visit user_url(@user_two)
     click_on 'フォローする'
 
     assert_text 'フォローしました。'
+    assert_selector :button, type: 'submit', value: 'フォロー解除する'
+
+    assert @user_one.following?(@user_two)
   end
 
   test 'unfollow a user' do
+    assert @user_one.following?(@user_three)
+
     visit user_url(@user_three)
     click_on 'フォロー解除する'
 
     assert_text 'フォロー解除しました。'
+    assert_selector :button, type: 'submit', value: 'フォローする'
+
+    assert_not @user_one.following?(@user_three)
   end
 end

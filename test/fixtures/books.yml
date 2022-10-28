@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  memo: MyText
+  title: The Fellowship of the Ring
+  memo: first part
 
 two:
-  title: MyString
-  memo: MyText
+  title: The Two Towers
+  memo: second part

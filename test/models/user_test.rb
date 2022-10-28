@@ -34,6 +34,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'follow a user' do
+    assert_not @user_one.following?(@user_two)
+
     @user_one.follow(@user_two)
     assert @user_one.following?(@user_two)
   end
@@ -47,10 +49,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should return name if name exist' do
-    assert_equal @user_three.name_or_email, @user_three.name
+    assert_equal 'Eriobu', @user_three.name_or_email
   end
 
   test 'should return email if name not exist' do
-    assert_equal @user_one.name_or_email, @user_one.email
+    assert_equal 'allison@example.com', @user_one.name_or_email
   end
 end

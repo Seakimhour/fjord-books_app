@@ -2,10 +2,10 @@
 
 one:
   user: one
-  title: MyString
-  content: MyText
+  title: The Fellowship of the Ring Book Review
+  content: This book was great and I loved to read what I missed in the movies.
 
 two:
   user: two
-  title: MyString
-  content: MyText
+  title: The Two Towers Book Review
+  content: I love this movie my favorite part is the opening with "All Star" by Smash Mouth.
