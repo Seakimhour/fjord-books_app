@@ -18,8 +18,8 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_on '新規作成'
 
-    fill_in 'book[title]', with: 'The Return of the King'
-    fill_in 'book[memo]', with: 'final volume'
+    fill_in 'タイトル', with: 'The Return of the King'
+    fill_in 'メモ', with: 'final volume'
     click_on '登録する'
 
     assert_text '本が作成されました。'
@@ -39,8 +39,8 @@ class BooksTest < ApplicationSystemTestCase
     # without reset value, sometimes new value will append to existing value. only happens on the first fill_in
     # https://github.com/redux-form/redux-form/issues/686
 
-    fill_in 'book[title]', with: 'The Return of the King', fill_options: { clear: :backspace }
-    fill_in 'book[memo]', with: 'final volume'
+    fill_in 'タイトル', with: 'The Return of the King', fill_options: { clear: :backspace }
+    fill_in 'メモ', with: 'final volume'
     click_on '更新する'
 
     assert_text '本が更新されました。'

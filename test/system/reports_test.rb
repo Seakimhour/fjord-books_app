@@ -18,8 +18,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '新規作成'
 
-    fill_in 'report[title]', with: 'The Return of the King Book Review'
-    fill_in 'report[content]', with: 'This book, while a very long, is the perfect ending of the series.'
+    fill_in 'タイトル', with: 'The Return of the King Book Review'
+    fill_in '内容', with: 'This book, while a very long, is the perfect ending of the series.'
     click_on '登録する'
 
     assert_text '日報が作成されました。'
@@ -35,8 +35,8 @@ class ReportsTest < ApplicationSystemTestCase
     assert_selector :field, type: 'text', with: 'The Fellowship of the Ring Book Review'
     assert_selector :field, type: 'textarea', with: 'This book was great and I loved to read what I missed in the movies.'
 
-    fill_in 'report[title]', with: 'The Return of the King Book Review', fill_options: { clear: :backspace }
-    fill_in 'report[content]', with: 'This book, while a very long, is the perfect ending of the series.'
+    fill_in 'タイトル', with: 'The Return of the King Book Review', fill_options: { clear: :backspace }
+    fill_in '内容', with: 'This book, while a very long, is the perfect ending of the series.'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
