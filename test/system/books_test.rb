@@ -44,10 +44,6 @@ class BooksTest < ApplicationSystemTestCase
     click_on '更新する'
 
     assert_text '本が更新されました。'
-    
-    assert_no_text 'The Fellowship of the Ring'
-    assert_no_text 'first part'
-
     assert_text 'The Return of the King'
     assert_text 'final volume'
   end

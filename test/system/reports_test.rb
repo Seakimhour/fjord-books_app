@@ -40,10 +40,6 @@ class ReportsTest < ApplicationSystemTestCase
     click_on '更新する'
 
     assert_text '日報が更新されました。'
-    
-    assert_no_text 'The Fellowship of the Ring Book Review'
-    assert_no_text 'This book was great and I loved to read what I missed in the movies.'
-
     assert_text 'The Return of the King Book Review'
     assert_text 'This book, while a very long, is the perfect ending of the series.'
   end
