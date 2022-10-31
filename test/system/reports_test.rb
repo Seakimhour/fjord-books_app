@@ -23,7 +23,6 @@ class ReportsTest < ApplicationSystemTestCase
     click_on '登録する'
 
     assert_text '日報が作成されました。'
-
     assert_text 'The Return of the King Book Review'
     assert_text 'This book, while a very long, is the perfect ending of the series.'
   end
@@ -54,7 +53,6 @@ class ReportsTest < ApplicationSystemTestCase
     end
 
     assert_text '日報が削除されました。'
-    
     assert_no_text 'The Fellowship of the Ring Book Review'
   end
 end

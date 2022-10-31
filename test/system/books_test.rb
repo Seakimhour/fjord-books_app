@@ -23,7 +23,6 @@ class BooksTest < ApplicationSystemTestCase
     click_on '登録する'
 
     assert_text '本が作成されました。'
-
     assert_text 'The Return of the King'
     assert_text 'final volume'
   end
@@ -50,13 +49,12 @@ class BooksTest < ApplicationSystemTestCase
 
     assert_text 'The Fellowship of the Ring'
     assert_text 'first part'
-    
+
     page.accept_confirm do
       click_on '削除', match: :first
     end
-    
+
     assert_text '本が削除されました。'
-    
     assert_no_text 'The Fellowship of the Ring'
     assert_no_text 'first part'
   end

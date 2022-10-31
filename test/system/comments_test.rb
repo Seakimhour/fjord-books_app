@@ -17,7 +17,6 @@ class CommentsTest < ApplicationSystemTestCase
     click_on 'コメントする'
 
     assert_text 'コメントが投稿されました。'
-
     assert_text 'This book is great!'
   end
 end

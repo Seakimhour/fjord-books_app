@@ -39,7 +39,8 @@ class ReportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update report' do
-    patch report_url(@the_followship_of_the_ring_review), params: { report: { title: @the_followship_of_the_ring_review.title, content: @the_followship_of_the_ring_review.content } }
+    patch report_url(@the_followship_of_the_ring_review),
+          params: { report: { title: @the_followship_of_the_ring_review.title, content: @the_followship_of_the_ring_review.content } }
     assert_redirected_to report_url(@the_followship_of_the_ring_review)
   end
 
