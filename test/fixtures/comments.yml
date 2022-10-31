@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  commentable: one (Book)
+allison_commented_on_the_followship_of_the_ring:
+  user: allison
+  commentable: the_followship_of_the_ring (Book)
   commentable_type: Commentable
   content: Among the greatest works of imaginative fiction of the twentieth century. The book presents us with the richest profusion of new lands and creatures, from the beauty of Lothlórien to the horror of Mordor.
 
-two:
-  user: two
-  commentable: two (Report)
+hansen_commented_on_the_two_towers_review:
+  user: hansen
+  commentable: the_two_towers_review (Report)
   commentable_type: Commentable
   content: This book is great! And the cliffhanger at the end makes you have immediately start the next book! Aragorn is so cool in this book and I love everything that people missed in the movies (which I also love). Definitely recommend people to read!!

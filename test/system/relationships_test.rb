@@ -6,36 +6,36 @@ class RelationshipsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @user_one = users(:one)
-    @user_two = users(:two)
-    @user_three = users(:three)
+    @allison = users(:allison)
+    @hansen = users(:hansen)
+    @eriobu = users(:eriobu)
 
-    @user_one.follow(@user_three)
+    @allison.follow(@eriobu)
 
-    sign_in @user_one
+    sign_in @allison
   end
 
   test 'following a user' do
-    assert_not @user_one.following?(@user_two)
+    assert_not @allison.following?(@hansen)
 
-    visit user_url(@user_two)
+    visit user_url(@hansen)
     click_on 'フォローする'
 
     assert_text 'フォローしました。'
     assert_selector :button, type: 'submit', value: 'フォロー解除する'
 
-    assert @user_one.following?(@user_two)
+    assert @allison.following?(@hansen)
   end
 
   test 'unfollow a user' do
-    assert @user_one.following?(@user_three)
+    assert @allison.following?(@eriobu)
 
-    visit user_url(@user_three)
+    visit user_url(@eriobu)
     click_on 'フォロー解除する'
 
     assert_text 'フォロー解除しました。'
     assert_selector :button, type: 'submit', value: 'フォローする'
 
-    assert_not @user_one.following?(@user_three)
+    assert_not @allison.following?(@eriobu)
   end
 end

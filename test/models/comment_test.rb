@@ -4,26 +4,26 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   setup do
-    @user = users(:one)
-    @book = books(:one)
+    @allison = users(:allison)
+    @the_followship_of_the_ring = books(:the_followship_of_the_ring)
   end
 
   test 'valid comment' do
-    comment = @book.comments.new(content: 'This book is great!')
-    comment.user = @user
+    comment = @the_followship_of_the_ring.comments.new(content: 'This book is great!')
+    comment.user = @allison
     assert comment.valid?
   end
 
   test 'invalid without user' do
-    comment = @book.comments.new(content: 'This book is great!')
+    comment = @the_followship_of_the_ring.comments.new(content: 'This book is great!')
     assert_not comment.valid?
 
-    comment.user = @user
+    comment.user = @allison
     assert comment.valid?
   end
 
   test 'invalid without content' do
-    comment = @book.comments.new(user_id: @user.id)
+    comment = @the_followship_of_the_ring.comments.new(user_id: @allison.id)
     assert_not comment.valid?
 
     comment.content = 'This book is great!'

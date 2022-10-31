@@ -5,15 +5,15 @@
 # below each fixture, per the syntax in the comments below
 #
 
-one:
+allison:
   email: allison@example.com
   encrypted_password: password
 
-two:
+hansen:
   email: hansen@example.com
   encrypted_password: password
 
-three:
+eriobu:
   name: Eriobu
   email: eriobu@example.com
   encrypted_password: password

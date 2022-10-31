@@ -6,8 +6,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:one)
-    @user = users(:two)
+    sign_in users(:allison)
+    @hansen = users(:hansen)
   end
 
   test 'should get index' do
@@ -16,7 +16,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show user' do
-    get user_url(@user)
+    get user_url(@hansen)
     assert_response :success
   end
 end

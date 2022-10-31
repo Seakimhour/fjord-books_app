@@ -4,12 +4,12 @@ require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
   setup do
-    @user_one = users(:one)
-    @user_two = users(:two)
+    @allison = users(:allison)
+    @hansen = users(:hansen)
   end
 
   test 'valid report' do
-    report = @user_one.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
+    report = @allison.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
     assert report.valid?
   end
 
@@ -17,12 +17,12 @@ class ReportTest < ActiveSupport::TestCase
     report = Report.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
     assert_not report.valid?
 
-    report.user = @user_one
+    report.user = @allison
     assert report.valid?
   end
 
   test 'invalid without title' do
-    report = @user_one.reports.new(content: 'J. R. R. Tolkien\'s The Lord of the Rings')
+    report = @allison.reports.new(content: 'J. R. R. Tolkien\'s The Lord of the Rings')
     assert_not report.valid?
 
     report.title = 'The Return of the King Book Review'
@@ -30,7 +30,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'invalid without content' do
-    report = @user_one.reports.new(title: 'The Return of the King Book Review')
+    report = @allison.reports.new(title: 'The Return of the King Book Review')
     assert_not report.valid?
 
     report.content = 'J. R. R. Tolkien\'s The Lord of the Rings'
@@ -38,14 +38,14 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'valid editable?' do
-    report = @user_one.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
+    report = @allison.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
 
-    assert report.editable?(@user_one)
+    assert report.editable?(@allison)
   end
 
   test 'invalid editable?' do
-    report = @user_one.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
+    report = @allison.reports.new(title: 'The Return of the King Book Review', content: 'J. R. R. Tolkien\'s The Lord of the Rings')
 
-    assert_not report.editable?(@user_two)
+    assert_not report.editable?(@hansen)
   end
 end

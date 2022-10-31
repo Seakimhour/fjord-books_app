@@ -6,7 +6,7 @@ class CommentsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:one)
+    sign_in users(:allison)
   end
 
   test 'creating a comment on a report' do

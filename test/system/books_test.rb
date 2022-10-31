@@ -6,7 +6,7 @@ class BooksTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in users(:one)
+    sign_in users(:allison)
   end
 
   test 'visiting the index' do
