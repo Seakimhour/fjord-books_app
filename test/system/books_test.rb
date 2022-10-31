@@ -36,10 +36,7 @@ class BooksTest < ApplicationSystemTestCase
     assert_field 'タイトル', with: 'The Fellowship of the Ring'
     assert_field 'メモ', with: 'first part'
 
-    # without reset value, sometimes new value will append to existing value. only happens on the first fill_in
-    # https://github.com/redux-form/redux-form/issues/686
-
-    fill_in 'タイトル', with: 'The Return of the King', fill_options: { clear: :backspace }
+    fill_in 'タイトル', with: 'The Return of the King'
     fill_in 'メモ', with: 'final volume'
     click_on '更新する'
 
