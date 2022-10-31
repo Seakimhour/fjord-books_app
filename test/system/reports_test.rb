@@ -32,8 +32,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '編集', match: :prefer_exact
 
-    assert_selector :field, type: 'text', with: 'The Fellowship of the Ring Book Review'
-    assert_selector :field, type: 'textarea', with: 'This book was great and I loved to read what I missed in the movies.'
+    assert_field 'タイトル', with: 'The Fellowship of the Ring Book Review'
+    assert_field '内容', with: 'This book was great and I loved to read what I missed in the movies.'
 
     fill_in 'タイトル', with: 'The Return of the King Book Review', fill_options: { clear: :backspace }
     fill_in '内容', with: 'This book, while a very long, is the perfect ending of the series.'

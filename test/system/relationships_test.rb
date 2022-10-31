@@ -22,7 +22,7 @@ class RelationshipsTest < ApplicationSystemTestCase
     click_on 'フォローする'
 
     assert_text 'フォローしました。'
-    assert_selector :button, type: 'submit', value: 'フォロー解除する'
+    assert_button 'フォロー解除する'
 
     assert @allison.following?(@hansen)
   end
@@ -34,7 +34,7 @@ class RelationshipsTest < ApplicationSystemTestCase
     click_on 'フォロー解除する'
 
     assert_text 'フォロー解除しました。'
-    assert_selector :button, type: 'submit', value: 'フォローする'
+    assert_button 'フォローする'
 
     assert_not @allison.following?(@eriobu)
   end

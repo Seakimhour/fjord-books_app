@@ -33,8 +33,8 @@ class BooksTest < ApplicationSystemTestCase
 
     click_on '編集', match: :prefer_exact
 
-    assert_selector :field, type: 'text', with: 'The Fellowship of the Ring'
-    assert_selector :field, type: 'textarea', with: 'first part'
+    assert_field 'タイトル', with: 'The Fellowship of the Ring'
+    assert_field 'メモ', with: 'first part'
 
     # without reset value, sometimes new value will append to existing value. only happens on the first fill_in
     # https://github.com/redux-form/redux-form/issues/686
