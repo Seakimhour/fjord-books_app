@@ -3,45 +3,54 @@
 require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @book = books(:one)
+    sign_in users(:allison)
   end
 
   test 'visiting the index' do
     visit books_url
-    assert_selector 'h1', text: 'Books'
+    assert_selector 'h1', text: '本'
   end
 
-  test 'creating a Book' do
+  test 'creating a book' do
     visit books_url
-    click_on 'New Book'
+    click_on '新規作成'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+    fill_in 'タイトル', with: 'The Return of the King'
+    fill_in 'メモ', with: 'final volume'
+    click_on '登録する'
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+    assert_text '本が作成されました。'
+    assert_text 'The Return of the King'
   end
 
-  test 'updating a Book' do
+  test 'updating a book' do
     visit books_url
-    click_on 'Edit', match: :first
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+    click_on '編集', match: :prefer_exact
 
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+    assert_field 'タイトル', with: 'The Fellowship of the Ring'
+
+    fill_in 'タイトル', with: 'The Return of the King'
+    fill_in 'メモ', with: 'final volume'
+    click_on '更新する'
+
+    assert_text '本が更新されました。'
+    assert_text 'The Return of the King'
   end
 
-  test 'destroying a Book' do
+  test 'destroying a book' do
     visit books_url
+
+    assert_text 'The Fellowship of the Ring'
+
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on '削除', match: :first
     end
 
-    assert_text 'Book was successfully destroyed'
+    assert_text '本が削除されました。'
+    assert_no_text 'The Fellowship of the Ring'
   end
 end
