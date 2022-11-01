@@ -24,7 +24,6 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text '日報が作成されました。'
     assert_text 'The Return of the King Book Review'
-    assert_text 'This book, while a very long, is the perfect ending of the series.'
   end
 
   test 'updating a Report' do
@@ -32,15 +31,13 @@ class ReportsTest < ApplicationSystemTestCase
     click_on '編集', match: :prefer_exact
 
     assert_field 'タイトル', with: 'The Fellowship of the Ring Book Review'
-    assert_field '内容', with: 'This book was great and I loved to read what I missed in the movies.'
 
-    fill_in 'タイトル', with: 'The Return of the King Book Review', fill_options: { clear: :backspace }
+    fill_in 'タイトル', with: 'The Return of the King Book Review'
     fill_in '内容', with: 'This book, while a very long, is the perfect ending of the series.'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
     assert_text 'The Return of the King Book Review'
-    assert_text 'This book, while a very long, is the perfect ending of the series.'
   end
 
   test 'destroying a Report' do
